@@ -1,6 +1,7 @@
 void setup() {
   size(800, 800);
   noSmooth();
+  pixelDensity(2);
   setupObjects();
 }
 
@@ -10,7 +11,8 @@ void draw() {
 
   background(0);
   //castSingleRay();
-  castWebRays(mouseLastClicked, 30, 5);
+  //castWebRays(mouseLastClicked, 30, 5);
+  castWebRays(mouseLastClicked, 360, 25);
   object.display();
 }
 
@@ -72,9 +74,10 @@ void castWebRays (PVector origin, int RAYS, int MAX_ITERATIONS) {
     for (int i = 0; i < RAYS; i++) {
       int j = (i+1)%RAYS;
       color col = color(i*255/RAYS, 190, 255*(1-1.*iteration/MAX_ITERATIONS));
-      //fill(col);
-      noFill();
-      stroke(255);
+      fill(col);
+      //noFill();
+      //stroke(255);
+      noStroke();
       beginShape(QUAD);
       vertex(olds[i].x, olds[i].y);
       vertex(currents[i].x, currents[i].y);
